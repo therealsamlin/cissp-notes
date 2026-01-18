@@ -528,6 +528,98 @@ MTTR (4) + WRT (1) = 5 hours < MTD (8 hours) ✓ Safe
 
 ---
 
+### Common Ports
+
+| Port | Protocol | Service |
+|------|----------|---------|
+| 20/21 | TCP | FTP (data/control) |
+| 22 | TCP | SSH, SCP, SFTP |
+| 23 | TCP | Telnet (insecure) |
+| 25 | TCP | SMTP |
+| 53 | TCP/UDP | DNS |
+| 67/68 | UDP | DHCP |
+| 80 | TCP | HTTP |
+| 88 | TCP/UDP | Kerberos |
+| 110 | TCP | POP3 |
+| 143 | TCP | IMAP |
+| 443 | TCP | HTTPS |
+| 389 | TCP | LDAP |
+| 636 | TCP | LDAPS |
+| 1433 | TCP | MS SQL |
+| 3306 | TCP | MySQL |
+| 3389 | TCP | RDP |
+
+**Exam traps:**
+- FTP = 21 (control), 20 (data)
+- DNS = both TCP and UDP
+- Secure version adds S or uses different port (LDAP 389 → LDAPS 636)
+
+---
+
+### TCP vs UDP
+
+| Aspect | TCP | UDP |
+|--------|-----|-----|
+| Connection | Connection-oriented (3-way handshake) | Connectionless |
+| Reliability | Guaranteed delivery, ordering | No guarantee |
+| Speed | Slower | Faster |
+| Use case | HTTP, FTP, SSH, email | DNS, DHCP, streaming, VoIP |
+
+**TCP 3-way handshake:**
+```
+Client → SYN → Server
+Client ← SYN-ACK ← Server
+Client → ACK → Server
+(Connection established)
+```
+
+**Exam use cases:**
+- "Needs reliability" → TCP
+- "Real-time, speed critical" → UDP
+- "Which protocol for DNS?" → Both (UDP for queries, TCP for zone transfers)
+
+---
+
+### Wireless Security
+
+| Standard | Encryption | Security |
+|----------|------------|----------|
+| **WEP** | RC4 (24-bit IV) | Broken — never use |
+| **WPA** | TKIP (RC4) | Weak — deprecated |
+| **WPA2** | AES-CCMP | Good — current standard |
+| **WPA3** | AES-GCMP, SAE | Best — latest |
+
+**Exam keywords:**
+- WEP IV is too short (24-bit) → easily cracked
+- WPA2 = AES = current standard
+- WPA3 SAE = Simultaneous Authentication of Equals (protects against offline dictionary attacks)
+- CCMP = Counter Mode with CBC-MAC Protocol
+
+---
+
+### 802.1X (Port-Based Authentication)
+
+```
+[Supplicant] ←→ [Authenticator] ←→ [Auth Server]
+  (client)        (switch/AP)       (RADIUS)
+
+1. Client connects to port
+2. Port blocked until authenticated
+3. Client sends credentials via EAP
+4. Authenticator forwards to RADIUS
+5. RADIUS approves → port opens
+```
+
+| Component | Role |
+|-----------|------|
+| **Supplicant** | Client device requesting access |
+| **Authenticator** | Switch or wireless AP |
+| **Authentication Server** | RADIUS server |
+
+**Exam tip:** 802.1X = NAC at port level, uses EAP and RADIUS
+
+---
+
 ### VPN Protocols
 
 | Protocol | Encryption |
