@@ -831,16 +831,17 @@ Step 5: Attacker's traffic reaches protected VLAN
 
 ### Testing Types
 
-| Type | Target | Method | Access |
-|------|--------|--------|--------|
-| **SAST** | Source code | Automated rules (passive) | White-box |
-| **DAST** | Running application | Active attacks | Black-box |
-| **IAST** | Running application | Agent monitors inside | Gray-box |
-| **SCA** | Third-party libraries | CVE database check | — |
+| Abbrev | Full Name | Target | Method | Access |
+|--------|-----------|--------|--------|--------|
+| **SAST** | Static Application Security Testing | Source code | Automated rules (passive) | White-box |
+| **DAST** | Dynamic Application Security Testing | Running app | Active attacks | Black-box |
+| **IAST** | Interactive Application Security Testing | Running app | Agent monitors inside | Gray-box |
+| **SCA** | Software Composition Analysis | Third-party libraries | CVE database check | — |
 
 **Exam Traps:**
-- SAST = source code, NOT compiled/binary
-- DAST = running app, NOT source code
+- SAST = **S**tatic = **S**ource code (not running)
+- DAST = **D**ynamic = running app (not source)
+- IAST = combines both (agent inside running app)
 
 ---
 
