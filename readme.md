@@ -1052,15 +1052,18 @@ Secret signal when under threat while appearing to comply.
 
 ### Network Topologies
 
-| Topology | Failure Impact | Redundancy |
-|----------|----------------|------------|
-| **Ring** | One break = down | Low |
-| **Bus** | Cable break = down | None |
-| **Star** | Center fails = all down | Low |
-| **Mesh** | Fault-tolerant | High |
-| **Tree** | Root fails = branches down | Low |
+| Topology | Failure Impact | Redundancy | Modern Usage |
+|----------|----------------|------------|--------------|
+| **Star** | Center fails = all down | Low | Most common (LAN) |
+| **Mesh** | Fault-tolerant | High | Data centers, cloud, WAN |
+| **Hybrid** | Varies | Medium-High | Large enterprises |
+| **Ring** | One break = down | Low | Legacy (SONET/fiber) |
+| **Bus** | Cable break = down | None | Obsolete |
+| **Tree** | Root fails = branches down | Low | Hierarchical networks |
 
-**Most fault-tolerant:** Mesh
+**Exam tips:**
+- Most fault-tolerant → Mesh
+- Most common LAN → Star
 
 ---
 
