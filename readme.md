@@ -4,6 +4,16 @@
 
 ## Risk Management
 
+### Security Planning Horizons
+
+| Plan Type | Timeframe | Focus | Example |
+|-----------|-----------|-------|---------|
+| **Strategic** | ~5 years | Long-term vision, goals | Security program roadmap, major investments |
+| **Tactical** | ~1 year | Mid-term projects | Annual training plan, tool deployments |
+| **Operational** | Monthly/Quarterly | Day-to-day tasks | Patch schedules, log reviews, audits |
+
+---
+
 ### Risk Response Types
 
 | Risk Response | What It Means | Example |
@@ -113,7 +123,17 @@
 
 ---
 
-### Control Types
+### Control Categories
+
+| Category | What It Is | Examples |
+|----------|------------|----------|
+| **Administrative** | Policies, procedures, people | NDAs, contracts, security policies, background checks, training |
+| **Technical (Logical)** | Hardware/software controls | Firewalls, encryption, access control, IDS, antivirus |
+| **Physical** | Protect physical environment | Mantraps, fences, guards, locks, CCTV, bollards |
+
+---
+
+### Control Types (Functions)
 
 | Type | Function | Examples |
 |------|----------|----------|
@@ -289,6 +309,28 @@ User + Service Ticket → Service → Access
 ---
 
 ## Identity and Access Management
+
+### Data Classification
+
+**Military/Government:**
+
+| Level | Description |
+|-------|-------------|
+| **Top Secret** | Exceptionally grave damage to national security |
+| **Secret** | Serious damage to national security |
+| **Confidential** | Damage to national security |
+| **Unclassified** | No damage if disclosed |
+
+**Business/Commercial:**
+
+| Level | Description |
+|-------|-------------|
+| **Confidential** | Most sensitive (trade secrets, financials) |
+| **Sensitive** | Internal use, limited disclosure |
+| **Private** | Personal data (PII) |
+| **Public** | Open to everyone |
+
+---
 
 ### Data Roles
 
@@ -798,14 +840,15 @@ Step 5: Attacker's traffic reaches protected VLAN
 
 ### Data Remanence (Sanitization)
 
+**Weakest to Strongest:**
+
 | Method | Remanence | Description |
 |--------|-----------|-------------|
-| **Erasing** | Most | Deletes file pointer only |
-| **Clearing** | Some | Overwrites with zeros |
-| **Purging** | Minimal | Degaussing, crypto-erase |
-| **Destruction** | None | Physical destruction |
-
-**Degaussing:** Works on magnetic media only (HDDs, tapes), not SSDs.
+| **Erasing** | Most | Deletes file pointer only (data still exists) |
+| **Clearing** | Some | Overwrites with zeros/patterns |
+| **Purging** | Minimal | Multiple overwrites, crypto-erase |
+| **Degaussing** | Minimal | Magnetic field destroys data (HDDs/tapes only, not SSDs) |
+| **Destruction** | None | Physical destruction (shredding, incineration) |
 
 ---
 
@@ -914,7 +957,7 @@ Step 5: Attacker's traffic reaches protected VLAN
 |------|------------|
 | **Salami attack** | Small thefts that add up (shaving pennies) |
 | **Birthday attack** | Hash collision exploit (birthday paradox) |
-| **Rainbow table** | Precomputed hash lookup table |
+| **Rainbow table** | Precomputed hash lookup table (defeated by salting) |
 | **Pass the hash** | Using stolen hash without cracking it |
 | **Watering hole** | Compromising site your target visits |
 | **Typosquatting** | Registering misspelled domains (gooogle.com) |
@@ -1124,3 +1167,52 @@ YOU: gcloud compute firewall-rules create allow-ssh --allow tcp:22
 | 800-37 | RMF |
 | 800-53 | Security Controls |
 | 800-88 | Media Sanitization |
+
+### NIST 800-37 RMF Steps (PCSIAAM)
+
+| Step | Phase | What Happens |
+|------|-------|--------------|
+| 1 | **P**repare | Establish context, priorities, resources |
+| 2 | **C**ategorize | Classify system based on impact (FIPS 199) |
+| 3 | **S**elect | Choose security controls (from 800-53) |
+| 4 | **I**mplement | Deploy the selected controls |
+| 5 | **A**ssess | Test controls for effectiveness |
+| 6 | **A**uthorize | Management accepts risk, grants ATO |
+| 7 | **M**onitor | Ongoing monitoring and updates |
+
+**Memory aid:** **P**eople **C**an **S**ee **I** **A**m **A**lways **M**onitoring
+
+---
+
+## Privacy Laws
+
+| Law | Scope |
+|-----|-------|
+| **GLBA** (Gramm-Leach-Bliley) | Financial institutions |
+| **HIPAA** | Healthcare |
+| **FERPA** | Education (student records) |
+| **COPPA** | Children under 13 online |
+| **SOX** (Sarbanes-Oxley) | Public companies (financial reporting) |
+| **ECPA** | Electronic communications |
+| **Privacy Act of 1974** | Federal government |
+| **GDPR** | EU residents' data |
+
+---
+
+## Quick Reference
+
+1. Insurance = **Assignment**
+2. Bell-LaPadula * = **No write down**
+3. Biba * = **No write up**
+4. Sag = **Momentary voltage drop**
+5. Brownout = **Extended low voltage**
+6. Class B suppression = **Halon/CO2**
+7. Class K suppression = **Wet chemical**
+8. Threat categories = **STRIDE**
+9. Key exchange = **DH/ECDHE**
+10. Bulk encryption = **AES**
+11. Source code analysis = **SAST**
+12. Library vulnerabilities = **SCA**
+13. TPM location = **Motherboard**
+14. Highest commercial EAL = **EAL4**
+15. Vulnerability score = **CVSS**
