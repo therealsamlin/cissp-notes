@@ -15,6 +15,12 @@ SLE = AV × EF
 Detect → Response → Mitigate → Report → Recovery → Remediation → Lessons Learned
 ```
 
+## SDLC (RDITE)
+```
+Real Developers Ideas Take Effort
+Requirements → Design → Implementation → Testing → Evolution (maintenance)
+```
+
 ## SECURITY MODELS
 ```
 Bell-LaPadula (Confidentiality): No read UP, no write DOWN | * = write

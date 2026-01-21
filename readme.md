@@ -587,16 +587,22 @@ MTTR (4) + WRT (1) = 5 hours < MTD (8 hours) ✓ Safe
 
 | Type | Layer | How It Works | Use Case |
 |------|-------|--------------|----------|
-| **Packet Filter** | 3-4 | Checks IP/port only | Basic perimeter, routers with ACLs |
-| **Stateful** | 3-4 | Tracks connection state | Standard enterprise firewall |
-| **Application Proxy** | 7 | Inspects content, breaks connection | High-security environments, web gateways |
-| **NGFW** | 3-7 | Deep inspection + IPS + app awareness | Modern enterprise, cloud environments |
+| **Static Packet Filter** | 3-4 | Checks IP/port only, no state | Basic ACLs, routers |
+| **Stateful (Dynamic)** | 3-4 | Tracks connection state | Standard enterprise firewall |
+| **Circuit-Level Gateway** | 5 (Session) | Monitors TCP handshake, validates sessions | SOCKS proxy |
+| **Application-Level Gateway** | 7 | Inspects content, breaks connection | High-security, web proxy |
+| **NGFW** | 3-7 | Deep inspection + IPS + app awareness | Modern enterprise |
 
 **Exam use cases:**
-- "Block based on IP/port only" → Packet filter
+- "Block based on IP/port only, no context" → Static Packet Filter
 - "Ensure reply packets match requests" → Stateful
-- "Inspect HTTP content for malware" → Application proxy or NGFW
-- "Identify and block specific applications like BitTorrent" → NGFW
+- "Validates TCP handshake only" → Circuit-Level (Layer 5)
+- "Inspect HTTP content for malware" → Application-Level or NGFW
+- "Identify and block specific applications" → NGFW
+
+**Key distinction:**
+- Circuit-level = checks session is valid (TCP handshake), doesn't inspect content
+- Application-level = inspects actual content/payload
 
 ---
 
