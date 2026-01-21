@@ -221,6 +221,24 @@
 
 ---
 
+### Digital Signatures
+
+**How it works:**
+
+1. Sender hashes the message
+2. Sender encrypts hash with their **private key** → signature
+3. Receiver decrypts signature with sender's **public key**
+4. Receiver hashes the message and compares
+
+**Provides:**
+- **Authentication** — proves sender identity
+- **Integrity** — detects tampering
+- **Non-repudiation** — sender can't deny sending
+
+**Does NOT provide:** Confidentiality (message isn't encrypted)
+
+---
+
 ### Symmetric vs Asymmetric
 
 | Type | Key Usage | Examples |
@@ -309,6 +327,39 @@ User + Service Ticket → Service → Access
 ---
 
 ## Identity and Access Management
+
+### Trusted Computing Base (TCB)
+
+| Term | Description |
+|------|-------------|
+| **TCB** | All hardware/firmware/software that enforces security policy |
+| **Security Perimeter** | Boundary between TCB and untrusted components |
+| **Reference Monitor** | Concept — abstract machine that mediates all access |
+| **Security Kernel** | Implementation of reference monitor |
+
+**Reference Monitor properties:**
+- Always invoked (can't be bypassed)
+- Tamper-proof
+- Small enough to verify
+
+**Key point:** Smaller TCB = more secure (less attack surface)
+
+---
+
+### System Security Modes
+
+| Mode | Clearance | Need-to-Know | Description |
+|------|-----------|--------------|-------------|
+| **Dedicated** | All users cleared for ALL data | All users approved for ALL data | Everyone cleared for everything |
+| **System High** | All users cleared for highest level | NOT all approved for all data | Need-to-know varies |
+| **Compartmented** | All users cleared for highest level | Formal approval per compartment | Compartmentalized access |
+| **Multilevel** | Users have different clearances | Different need-to-know | System enforces MAC labels |
+
+**Key points:**
+- Dedicated = most restrictive (everyone must be cleared for everything)
+- Multilevel = least restrictive, most trust in system (MAC enforcement)
+
+---
 
 ### Data Classification
 
@@ -874,12 +925,12 @@ Step 5: Attacker's traffic reaches protected VLAN
 
 ### Testing Types
 
-| Abbrev | Full Name | Target | Method | Access |
-|--------|-----------|--------|--------|--------|
-| **SAST** | Static Application Security Testing | Source code | Automated rules (passive) | White-box |
-| **DAST** | Dynamic Application Security Testing | Running app | Active attacks | Black-box |
-| **IAST** | Interactive Application Security Testing | Running app | Agent monitors inside | Gray-box |
-| **SCA** | Software Composition Analysis | Third-party libraries | CVE database check | — |
+| Abbrev | Full Name | Target | Access | Description |
+|--------|-----------|--------|--------|-------------|
+| **SAST** | Static Application Security Testing | Source code | White-box | Code review, analyzing codebase |
+| **DAST** | Dynamic Application Security Testing | Running app | Black-box | Tests against compiled software |
+| **IAST** | Interactive Application Security Testing | Running app | Gray-box | Interactive tests with agent inside app |
+| **SCA** | Software Composition Analysis | Third-party libraries | — | CVE database check |
 
 **Exam Traps:**
 - SAST = **S**tatic = **S**ource code (not running)
