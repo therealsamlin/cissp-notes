@@ -1124,23 +1124,3 @@ YOU: gcloud compute firewall-rules create allow-ssh --allow tcp:22
 | 800-37 | RMF |
 | 800-53 | Security Controls |
 | 800-88 | Media Sanitization |
-
----
-
-## Quick Reference
-
-1. Insurance = **Assignment**
-2. Bell-LaPadula * = **No write down**
-3. Biba * = **No write up**
-4. Sag = **Momentary voltage drop**
-5. Brownout = **Extended low voltage**
-6. Class B suppression = **Halon/CO2**
-7. Class K suppression = **Wet chemical**
-8. Threat categories = **STRIDE**
-9. Key exchange = **DH/ECDHE**
-10. Bulk encryption = **AES**
-11. Source code analysis = **SAST**
-12. Library vulnerabilities = **SCA**
-13. TPM location = **Motherboard**
-14. Highest commercial EAL = **EAL4**
-15. Vulnerability score = **CVSS**
